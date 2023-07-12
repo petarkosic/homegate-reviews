@@ -15,7 +15,7 @@ CREATE TABLE users(
 CREATE TABLE reviews(
     review_id SERIAL,
     user_id SERIAL,
-    appartment_id INTEGER,
+    apartment_id INTEGER,
     review_text TEXT NOT NULL,
     date_of_review TIMESTAMP NOT NULL DEFAULT NOW(),
     star_rating INTEGER NOT NULL,
