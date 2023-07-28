@@ -1,3 +1,44 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { useApartmentStore } from '../stores/ApartmentStore';
+import { useDebounce } from './../helpers/useDebounce';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const query = ref<string>('');
+const apartmentStore = useApartmentStore();
+const searchInputRef = ref<HTMLInputElement | null>(null);
+const emptyFieldError = ref<string | null>('');
+
+onMounted(() => {
+	searchInputRef.value?.focus();
+});
+
+const handleInput = (e: Event) => {
+	if (e.target instanceof HTMLInputElement) {
+		query.value = e.target.value;
+	}
+};
+
+const searchApartments = () => {
+	if (query.value !== '' && query.value.charAt(0) !== '-') {
+		apartmentStore.getApartment(query.value);
+		router.push(`/${query.value}`);
+	}
+	if (query.value === '') {
+		emptyFieldError.value = 'Search field cannot be empty';
+	}
+	if (query.value.charAt(0) === '-') {
+		emptyFieldError.value = 'Search field cannot start with a dash';
+	}
+	setTimeout(() => {
+		emptyFieldError.value = null;
+	}, 3000);
+};
+
+const debouncedSearch = useDebounce(searchApartments, 1200);
+</script>
+
 <template>
 	<div>
 		<input
@@ -5,7 +46,7 @@
 			ref="searchInputRef"
 			placeholder="Search"
 			v-model="query"
-			@input="handleInput"
+			@input="debouncedSearch"
 		/>
 		<button @click="searchApartments">Search</button>
 	</div>
@@ -13,43 +54,6 @@
 		{{ emptyFieldError }}
 	</div>
 </template>
-
-<script lang="ts">
-import { ref, onMounted } from 'vue';
-import { useApartmentStore } from '../stores/ApartmentStore';
-
-export default {
-	setup() {
-		const query = ref('');
-		const apartmentStore = useApartmentStore();
-		const searchInputRef = ref<HTMLInputElement | null>(null);
-		const emptyFieldError = ref<string | null>('');
-
-		const handleInput = (e: Event) => {
-			if (e.target instanceof HTMLInputElement) {
-				query.value = e.target.value;
-			}
-		};
-
-		const searchApartments = () => {
-			if (query.value !== '') {
-				apartmentStore.getApartment(query.value);
-			} else {
-				emptyFieldError.value = 'Search field cannot be empty';
-			}
-			setTimeout(() => {
-				emptyFieldError.value = null;
-			}, 3000);
-		};
-
-		onMounted(() => {
-			searchInputRef.value?.focus();
-		});
-
-		return { query, searchApartments, emptyFieldError, handleInput };
-	},
-};
-</script>
 
 <style scoped>
 input {

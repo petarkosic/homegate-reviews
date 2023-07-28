@@ -25,7 +25,7 @@ CREATE TABLE apartments(
 CREATE TABLE reviews(
     review_id SERIAL,
     user_id INTEGER,
-    apartment_id INTEGER,
+    apartment_id BIGINT,
     review_text TEXT NOT NULL,
     date_of_review TIMESTAMP NOT NULL DEFAULT NOW(),
     star_rating INTEGER NOT NULL CHECK (star_rating BETWEEN 1 AND 5),
