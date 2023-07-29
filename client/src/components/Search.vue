@@ -56,8 +56,14 @@ const debouncedSearch = useDebounce(searchApartments, 1200);
 </template>
 
 <style scoped>
+div {
+	padding: 2rem;
+}
 input {
-	width: 100%;
+	width: 60%;
 	height: 40px;
+	border: none;
+	border-radius: 6px;
+	padding: 0 1rem;
 }
 </style>
