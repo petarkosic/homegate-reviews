@@ -44,7 +44,7 @@ const debouncedSearch = useDebounce(searchApartments, 1200);
 		<input
 			type="text"
 			ref="searchInputRef"
-			placeholder="Search"
+			placeholder="Search apartment by ID"
 			v-model="query"
 			@input="debouncedSearch"
 		/>
@@ -57,10 +57,13 @@ const debouncedSearch = useDebounce(searchApartments, 1200);
 
 <style scoped>
 div {
-	padding: 2rem;
+	/* padding: 2rem; */
+	display: flex;
+	gap: 0.5rem;
 }
 input {
 	width: 60%;
+	min-width: 150px;
 	height: 40px;
 	border: none;
 	border-radius: 6px;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Search from './../components/Search.vue';
 import { computed } from 'vue';
-import { useRouter, RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router';
+import Navbar from '../components/Navbar.vue';
 
 import { useApartmentStore } from './../stores/ApartmentStore';
 
@@ -14,15 +14,7 @@ const apartment = computed(() => apartmentStore.apartment);
 
 <template>
 	<main>
-		<RouterLink :to="{ name: 'home' }">
-			<div class="flex items-center gap-3">
-				<i class="fa-solid fa-sun text-2xl"></i>
-				<p class="text-2xl">Home Page</p>
-			</div>
-		</RouterLink>
-		<div class="search">
-			<Search />
-		</div>
+		<Navbar />
 	</main>
 </template>
 
@@ -31,18 +23,5 @@ main {
 	width: 100%;
 	height: 100vh;
 	display: flex;
-}
-
-a {
-	text-align: left;
-}
-
-a div {
-	padding: 2rem;
-}
-
-.search {
-	flex: 4;
-	text-align: left;
 }
 </style>
