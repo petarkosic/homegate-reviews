@@ -9,10 +9,10 @@ const apartment = computed(() => apartmentStore.apartment);
 </script>
 
 <template>
-	<main>
-		<div>
+	<section>
+		<main>
 			<Navbar />
-		</div>
+		</main>
 		<div>
 			<div v-if="apartment" class="wrapper">
 				<h2>Apartment Name: {{ apartment.name }}</h2>
@@ -23,14 +23,16 @@ const apartment = computed(() => apartmentStore.apartment);
 				<p>No apartment details available.</p>
 			</div>
 		</div>
-	</main>
+	</section>
 </template>
 
 <style scoped>
-main {
+section {
 	width: 100%;
 	height: 100vh;
+}
+
+main {
 	display: flex;
-	flex-direction: column;
 }
 </style>
