@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import apartmentRoute from './../routes/apartmentRoute';
+import apartmentRoute from './routes/apartmentRoute';
 
 dotenv.config();
 const PORT: string | number = process.env.PORT || 5000;

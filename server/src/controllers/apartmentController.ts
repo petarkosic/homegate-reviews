@@ -26,7 +26,8 @@ const getApartment = async (req: Request, res: Response) => {
 			u.user_id AS reviewer_id,
 			u.first_name AS reviewer_first_name,
 			u.last_name AS reviewer_last_name,
-			u.email AS reviewer_email
+			u.email AS reviewer_email,
+			u.registered_at AT TIME ZONE 'UTC+00:00' AS reviewer_registered_at
 		FROM
 			apartments AS a
 		LEFT JOIN
@@ -43,7 +44,7 @@ const getApartment = async (req: Request, res: Response) => {
 
 		res.json({
 			message: 'success',
-			data: apartmentQuery.rows[0] || [],
+			data: apartmentQuery.rows || [],
 		});
 	} catch (err) {
 		await client.query('ROLLBACK');

@@ -337,7 +337,7 @@ export const userData = [
 export const reviewsData = [
 	{
 		user_id: 1,
-		apartment_id: 1,
+		apartment_id: 3003288394,
 		review_text: JSON.stringify(
 			"This apartment is a hidden gem! It''s spacious, well-designed, and comes with fantastic amenities. The location is perfect, with easy access to public transportation and nearby parks. I''m thrilled with my decision to rent this place"
 		),
@@ -347,7 +347,7 @@ export const reviewsData = [
 
 	{
 		user_id: 2,
-		apartment_id: 1,
+		apartment_id: 3003336011,
 		review_text: JSON.stringify(
 			'I just moved into this apartment, and it feels like home already. The unit is modern, clean, and filled with natural light. The building staff has been friendly and accommodating throughout the leasing process. Highly recommend!'
 		),
@@ -357,7 +357,7 @@ export const reviewsData = [
 
 	{
 		user_id: 3,
-		apartment_id: 1,
+		apartment_id: 3003238714,
 		review_text: JSON.stringify(
 			"This apartment is a dream come true! The layout is perfect for my needs, and the kitchen is equipped with top-notch appliances. The building amenities, especially the rooftop terrace, are incredible. I''m loving every moment here!"
 		),
@@ -367,57 +367,57 @@ export const reviewsData = [
 
 	{
 		user_id: 4,
-		apartment_id: 1,
+		apartment_id: 3003113399,
 		review_text: JSON.stringify(
 			"I''ve been living in this apartment for a few months, and I couldn''t be happier. The location is fantastic, with great restaurants and shops within walking distance. The apartment is well-maintained, and the management is responsive. I definitely recommend it!"
 		),
-		date_of_review: '2023-08-05',
+		date_of_review: '2023-02-05',
 		star_rating: 4,
 	},
 
 	{
 		user_id: 5,
-		apartment_id: 1,
+		apartment_id: 3003317466,
 		review_text: JSON.stringify(
 			"This apartment is perfection! The view from the balcony is breathtaking, and the interior is beautifully designed. The building facilities, like the gym and swimming pool, are well-maintained. I''m grateful to have found such a wonderful place to call home."
 		),
-		date_of_review: '2023-09-01',
+		date_of_review: '2023-06-01',
 		star_rating: 5,
 	},
 
 	{
 		user_id: 6,
-		apartment_id: 1,
+		apartment_id: 3003344682,
 		review_text: JSON.stringify(
 			"I recently moved into this apartment, and it''s been a fantastic experience. The unit is spacious and filled with natural light. The location is ideal, close to everything I need. The leasing process was smooth, and the staff was friendly and professional."
 		),
-		date_of_review: '2023-10-12',
+		date_of_review: '2023-05-12',
 		star_rating: 5,
 	},
 
 	{
 		user_id: 7,
-		apartment_id: 1,
+		apartment_id: 3003344682,
 		review_text: JSON.stringify(
 			"This apartment is everything I wanted and more! The modern design and high-quality appliances make it feel luxurious. The neighborhood is safe and peaceful. I''m grateful for the quick response to maintenance requests as well."
 		),
-		date_of_review: '2023-11-03',
+		date_of_review: '2023-02-03',
 		star_rating: 4,
 	},
 
 	{
 		user_id: 8,
-		apartment_id: 1,
+		apartment_id: 3003238714,
 		review_text: JSON.stringify(
 			"I''ve been living in this apartment for a year, and it has been a wonderful experience. The unit is well-maintained, and the building management is attentive. The location is great, with easy access to public transit. I highly recommend this apartment!"
 		),
-		date_of_review: '2023-12-20',
+		date_of_review: '2023-04-20',
 		star_rating: 4,
 	},
 
 	{
 		user_id: 9,
-		apartment_id: 1,
+		apartment_id: 3003336011,
 		review_text: JSON.stringify(
 			"This apartment has surpassed my expectations. It''s spacious, bright, and thoughtfully designed. The amenities, like the fitness center and lounge area, are fantastic. The neighborhood is vibrant, with plenty of shops and cafes nearby."
 		),
@@ -426,8 +426,8 @@ export const reviewsData = [
 	},
 
 	{
-		user_id: 0,
-		apartment_id: 1,
+		user_id: 10,
+		apartment_id: 3003238714,
 		review_text: JSON.stringify(
 			"I''ve been living in this apartment for six months, and it''s been a wonderful experience. The unit is well-maintained, and the neighbors are friendly. The location is ideal, with easy access to major highways. I would highly recommend this place."
 		),
@@ -436,8 +436,108 @@ export const reviewsData = [
 	},
 
 	{
-		user_id: 0,
-		apartment_id: 1,
+		user_id: 11,
+		apartment_id: 3003289050,
+		review_text: JSON.stringify(
+			"This apartment is perfect for me! It''s cozy, quiet, and has a great layout. The kitchen is equipped with all the essentials. The building is well-maintained, and the staff is helpful. I''m really happy with my choice."
+		),
+		date_of_review: '2023-03-15',
+		star_rating: 4,
+	},
+
+	{
+		user_id: 12,
+		apartment_id: 3003289050,
+		review_text: JSON.stringify(
+			"I recently moved into this apartment, and I love it. The unit is spacious and bright, and the neighborhood is peaceful. The building amenities, like the swimming pool and BBQ area, are great for socializing. I''m enjoying every day here."
+		),
+		date_of_review: '2023-04-07',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 13,
+		apartment_id: 3003238714,
+		review_text: JSON.stringify(
+			"I''m thrilled with this apartment! The floor plan is fantastic, and the interior design is lovely. The building management has been responsive and helpful. The location is excellent, with shopping and dining options nearby."
+		),
+		date_of_review: '2023-05-20',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 14,
+		apartment_id: 3003317466,
+		review_text: JSON.stringify(
+			"This apartment is wonderful. It''s spacious, quiet, and has a nice view. The maintenance team is quick to address any issues. The location is convenient, with grocery stores and parks within walking distance."
+		),
+		date_of_review: '2023-06-02',
+		star_rating: 4,
+	},
+
+	{
+		user_id: 15,
+		apartment_id: 3003264256,
+		review_text: JSON.stringify(
+			'I love living in this apartment! The unit is modern and clean, with plenty of storage space. The neighborhood is safe and family-friendly. The leasing process was smooth, and the staff was welcoming.'
+		),
+		date_of_review: '2023-07-18',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 16,
+		apartment_id: 3003238714,
+		review_text: JSON.stringify(
+			"I moved into this apartment last month, and it''s been a positive experience. The unit is well-maintained, and the appliances are in excellent condition. The building amenities, like the fitness center and lounge, are great perks."
+		),
+		date_of_review: '2023-04-11',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 17,
+		apartment_id: 3003344682,
+		review_text: JSON.stringify(
+			'This apartment feels like home. The space is well-utilized, and the kitchen has everything I need. The location is fantastic, with easy access to public transportation. The management has been helpful and responsive.'
+		),
+		date_of_review: '2023-05-05',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 18,
+		apartment_id: 3003264256,
+		review_text: JSON.stringify(
+			"This apartment is great. It''s well-designed and comes with useful amenities. The location is convenient, with shops and restaurants nearby. The leasing process was straightforward, and the staff was friendly."
+		),
+		date_of_review: '2023-03-22',
+		star_rating: 4,
+	},
+
+	{
+		user_id: 19,
+		apartment_id: 3003304639,
+		review_text: JSON.stringify(
+			"I moved into this apartment a few weeks ago, and I''m really pleased. The unit is spacious and bright, with updated appliances. The building is well-maintained, and the staff is attentive."
+		),
+		date_of_review: '2023-01-09',
+		star_rating: 4,
+	},
+
+	{
+		user_id: 20,
+		apartment_id: 3003317466,
+		review_text: JSON.stringify(
+			"I love this apartment! It''s cozy and feels like a home. The neighborhood is safe, and the building amenities are fantastic. I''m grateful for the great living experience."
+		),
+		date_of_review: '2023-05-15',
+		star_rating: 5,
+	},
+
+	{
+		user_id: 21,
+		apartment_id: 3003288394,
 		review_text: JSON.stringify(
 			"I moved into this apartment recently, and it''s been a frustrating experience. The unit had several maintenance issues upon move-in, and despite reporting them, the repairs were slow and inadequate. The building management lacks responsiveness, and it''s been a disappointment overall."
 		),
@@ -446,8 +546,8 @@ export const reviewsData = [
 	},
 
 	{
-		user_id: 1,
-		apartment_id: 1,
+		user_id: 22,
+		apartment_id: 3003304639,
 		review_text: JSON.stringify(
 			"Avoid this apartment complex! The noise levels are unbearable, with constant construction and noisy neighbors. The unit was not properly cleaned before move-in, and the carpets were stained. The amenities are subpar, and the management''s lack of attention to tenant concerns is appalling."
 		),
@@ -456,82 +556,82 @@ export const reviewsData = [
 	},
 
 	{
-		user_id: 2,
-		apartment_id: 1,
+		user_id: 23,
+		apartment_id: 3003344682,
 		review_text: JSON.stringify(
 			"This apartment has been a letdown. The building is old and poorly maintained, leading to frequent plumbing and electrical issues. The walls are paper-thin, and I can hear every conversation from neighboring units. I wouldn''t recommend living here."
 		),
-		date_of_review: '2023-08-12',
+		date_of_review: '2023-04-12',
 		star_rating: 2,
 	},
 
 	{
-		user_id: 3,
-		apartment_id: 1,
+		user_id: 24,
+		apartment_id: 3003336011,
 		review_text: JSON.stringify(
 			'I had a terrible experience living in this apartment. The unit had a persistent mold problem that was not addressed properly, leading to health concerns. The management was dismissive of my complaints, and I felt neglected as a tenant.'
 		),
-		date_of_review: '2023-09-08',
+		date_of_review: '2023-02-08',
 		star_rating: 1,
 	},
 
 	{
-		user_id: 4,
-		apartment_id: 1,
+		user_id: 25,
+		apartment_id: 3003317466,
 		review_text: JSON.stringify(
 			'This apartment is not worth the price. The unit was smaller than expected, and the layout was awkward. The advertised amenities were outdated and barely functional. The lack of parking spaces made it difficult to find a spot close to the building.'
 		),
-		date_of_review: '2023-10-01',
+		date_of_review: '2023-04-01',
 		star_rating: 2,
 	},
 
 	{
-		user_id: 5,
-		apartment_id: 1,
+		user_id: 26,
+		apartment_id: 3003113399,
 		review_text: JSON.stringify(
 			"Living in this apartment has been a nightmare. The building''s security is inadequate, and I often felt unsafe. The walls had water damage, and the building''s cleanliness was below par. The management''s negligence is evident throughout."
 		),
-		date_of_review: '2023-11-15',
+		date_of_review: '2023-05-15',
 		star_rating: 1,
 	},
 
 	{
-		user_id: 6,
-		apartment_id: 1,
+		user_id: 27,
+		apartment_id: 3003264256,
 		review_text: JSON.stringify(
 			"I was disappointed with this apartment''s condition. The unit was in need of repairs upon move-in, and the appliances were old and malfunctioning. The building''s common areas were unkempt, and the overall environment felt neglected."
 		),
-		date_of_review: '2023-12-05',
+		date_of_review: '2023-06-05',
 		star_rating: 2,
 	},
 
 	{
-		user_id: 7,
-		apartment_id: 1,
+		user_id: 28,
+		apartment_id: 3003349788,
 		review_text: JSON.stringify(
 			"This apartment has been nothing but trouble. The walls are thin, and the noise from neighbors disrupted my peace. The heating system was unreliable, and the maintenance team''s response time was slow. I regret choosing this place."
 		),
-		date_of_review: '2024-01-12',
+		date_of_review: '2023-01-12',
 		star_rating: 1,
 	},
 
 	{
-		user_id: 8,
-		apartment_id: 1,
+		user_id: 29,
+		apartment_id: 3003264256,
 		review_text: JSON.stringify(
 			"Living in this apartment was frustrating. The unit had constant plumbing issues, and the water pressure was extremely low. The property management''s lack of professionalism and accountability was evident throughout my stay."
 		),
-		date_of_review: '2024-02-20',
+		date_of_review: '2023-02-20',
 		star_rating: 2,
 	},
 
 	{
-		user_id: 9,
-		apartment_id: 1,
+		user_id: 30,
+		apartment_id: 3003264256,
 		review_text: JSON.stringify(
 			"I had a disappointing experience in this apartment. The building''s noise insulation was non-existent, and the neighbors were inconsiderate. The building''s facilities were poorly maintained, and the staff seemed disinterested in addressing my concerns."
 		),
-		date_of_review: '2024-03-10',
+		date_of_review: '2023-03-10',
 		star_rating: 1,
 	},
 ];

@@ -11,7 +11,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE apartments(
-    apartment_id SERIAL,
+    apartment_id BIGSERIAL,
     cost_of_rent DECIMAL,
     number_of_rooms INTEGER,
     living_space_sqm DECIMAL,
@@ -24,8 +24,8 @@ CREATE TABLE apartments(
 
 CREATE TABLE reviews(
     review_id SERIAL,
-    user_id INTEGER,
-    apartment_id BIGINT,
+    user_id SERIAL, 
+    apartment_id BIGSERIAL,
     review_text TEXT NOT NULL,
     date_of_review TIMESTAMP NOT NULL DEFAULT NOW(),
     star_rating INTEGER NOT NULL CHECK (star_rating BETWEEN 1 AND 5),
