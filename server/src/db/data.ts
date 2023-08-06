@@ -12,16 +12,24 @@ export const apartmentData = [
 		features_and_furnishings: [],
 	},
 	{
-		apartment_id: 3003289050,
-		cost_of_rent: 1350,
-		number_of_rooms: 2,
-		living_space_sqm: 27,
-		address: 'Avenue Henri-Dunant 20, 1205 Genève',
-		availability: '01.09.2023',
+		apartment_id: 3003368114,
+		cost_of_rent: 1450,
+		number_of_rooms: 1,
+		living_space_sqm: 30,
+		address: 'Rue Charles-Cusin, 1201 Genève',
+		availability: 'Immediately',
 		description: JSON.stringify(
-			"Face à la plaine de Plainpalais, à deux pas du Centre-Ville.\nBeau 2 pièces très bien situé, avec cave.\n\nIl se compose comme suit :\n\n- Une pièce à vivre\n- Une cuisine\n- Une salle de bains avec WC\n\nDisponible au 1er septembre 2023.\n\nAvons-nous éveillé votre intérêt ? Dans ce cas, n'hésitez pas à prendre contact avec nous directement depuis le formulaire de contact pour toutes demandes et/ou visites.\n\nNous vous en remercions d'avance."
+			"E'Charmant Studio dans le quartier des Paquis\nStudio fonctionnel et confortable dans le quartier des Pâquis.\n\nEntièrement rénové, kitchenette équipée et agencée.\n\nDisponible au 15 septembre 2023.\n\nPour les visites, merci de contacter directement notre agence de relocation pour s'inscrire."
 		),
-		features_and_furnishings: ['elevator'],
+		features_and_furnishings: [
+			'Pets allowed',
+			'Smoking permitted',
+			'Child friendly',
+			'Old building',
+			'Washing machine',
+			'Wheelchair access',
+			'Elevator',
+		],
 	},
 	{
 		apartment_id: 3003317466,
@@ -33,7 +41,7 @@ export const apartmentData = [
 		description: JSON.stringify(
 			"Votre studio au centre-ville de Genève !\nCe magnifique logement vous comblera par son charme, il se situe dans un quartier très animé, proche des commerces, des transports publics et du lac !\n\nIl se compose de la manière suivante :\n\n- Une pièce à vivre\n- Une cuisine ouverte et agencée\n- Une salle-de-bains avec WC\n\nDisponible au 1er juillet 2023\n\nAvons-nous éveillé votre intérêt ? Dans ce cas, n'hésitez pas à prendre contact avec nous directement depuis le formulaire de contact pour toutes demandes et/ou visites.\n\nUne fois la visite effectuée, nous nous réjouissons de recevoir votre dossier de candidature directement sur notre formulaire en ligne inscrit ci-dessous :\n\n\nhttps://flatfox.ch/fr/listing/442364/submit/\n\n\nUniquement les dossiers via le lien seront pris en considération, nous vous en remercions d'avance."
 		),
-		features_and_furnishings: ['elevator'],
+		features_and_furnishings: ['Elevator'],
 	},
 	{
 		apartment_id: 3003264256,
@@ -45,7 +53,7 @@ export const apartmentData = [
 		description: JSON.stringify(
 			"Habitez à proximité du centre-ville !\nPar son emplacement avantageux, le quartier animé dans lequel se situe ce logement vous offre la possibilité de bénéficier de tous les commerces et moyens de transports nécessaire.\n\n\nIl se compose comme suit :\n\n\n- Une lumineuse pièce à vivre\n- Une cuisine agencée\n- Une salle de douche\n\n\nDisponible au 1er septembre 2023.\n\n\nAvons-nous éveillé votre intérêt ? Dans ce cas, n'hésitez pas à prendre contact avec nous directement depuis le formulaire de contact pour toutes demandes et/ou visites.\n\n\nUne fois la visite effectuée, nous nous réjouissons de recevoir votre dossier de candidature directement sur notre formulaire en ligne inscrit ci-dessous :\n\n\nhttps://flatfox.ch/fr/listing/880524/submit/\n\n\nUniquement les dossiers via le lien seront pris en considération, nous vous en remercions d'avance."
 		),
-		features_and_furnishings: ['elevator'],
+		features_and_furnishings: ['Elevator'],
 	},
 	{
 		apartment_id: 3003304639,
@@ -57,7 +65,7 @@ export const apartmentData = [
 		description: JSON.stringify(
 			"Appartements neufs dans un magnifique projet nommé Côté Parc - https://coteparc-location.ch/\nhttps://coteparc-location.ch/\n\nAutour d'un parc de 5 hectares, nous avons le plaisir de vous proposer des logements de 2 pièces, neufs, au sein de notre promotion Côté Parc.\n\nLes logements profitent d'une grande luminosité et comptent environ 29m2. Ils se composent d'une entrée, d'une salle de douche avec toilettes et d'une pièce à vivre avec une belle cuisine entièrement équipée (plaque, hotte, four, frigo avec bac de congélation et lave-vaisselle).\n\nVeuillez noter que les logements ne disposent pas de balcon ni de branchement pour lave-linge. De ce fait, une buanderie sera mise à disposition des locataires dans chaque immeuble (service Lavorent).\n\nLes logements sont complétés par une cave, laissée à titre gratuit et à bien plaire.\n\nEnfin, nous vous informons qu'aucune visite n'est possible. La location des appartements se fait exclusivement sur plan, via le site internet dédié : https://coteparc-location.ch/. Maximum 2 appartements par candidature."
 		),
-		features_and_furnishings: ['new building'],
+		features_and_furnishings: ['New building'],
 	},
 	{
 		apartment_id: 3003288394,
@@ -93,7 +101,7 @@ export const apartmentData = [
 		description: JSON.stringify(
 			"A proximité des HUG\ncomprenant : un hall avec rangements, une cuisine avec meubles de rangements, cuisinière et frigo, une pièce de vie, une salle de bains avec WC , un balcon. Le bail établi sera à terme fixe jusqu'au 31.03.2026, non-renouvelable."
 		),
-		features_and_furnishings: ['elevator', 'cable tv', 'old building'],
+		features_and_furnishings: ['Elevator', 'Cable tv', 'Old building'],
 	},
 	{
 		apartment_id: 3003336011,
@@ -117,7 +125,7 @@ export const apartmentData = [
 		description: JSON.stringify(
 			"Votre prochain studio aux Pâquis!\nCe magnifique studio vous comblera par son charme, il se situe proche du lac, des commerces et des transports publics.\n\nIl se compose ainsi :\n\n- Une pièce de vie lumineuse\n- Une cuisine semi-ouverte\n- Une belle salle de bains\n- Une cave\n\nDisponible au 1er octobre 2023.\n\nPour vous inscrire à l'unique visite groupée merci d'utiliser ce lien:\n\nhttps://www.perty.immo/apply.html?id=09b8059e-cb86-457c-966d-16ef81820955\n\nSeuls les dossiers électroniques seront pris en considération, nous vous en remercions d'avance.\n\nPhotos non-contractuelles."
 		),
-		features_and_furnishings: ['elevator', 'pets allowed'],
+		features_and_furnishings: ['Elevator', 'Pets allowed'],
 	},
 ];
 
@@ -437,7 +445,7 @@ export const reviewsData = [
 
 	{
 		user_id: 11,
-		apartment_id: 3003289050,
+		apartment_id: 3003368114,
 		review_text: JSON.stringify(
 			"This apartment is perfect for me! It''s cozy, quiet, and has a great layout. The kitchen is equipped with all the essentials. The building is well-maintained, and the staff is helpful. I''m really happy with my choice."
 		),
@@ -447,7 +455,7 @@ export const reviewsData = [
 
 	{
 		user_id: 12,
-		apartment_id: 3003289050,
+		apartment_id: 3003368114,
 		review_text: JSON.stringify(
 			"I recently moved into this apartment, and I love it. The unit is spacious and bright, and the neighborhood is peaceful. The building amenities, like the swimming pool and BBQ area, are great for socializing. I''m enjoying every day here."
 		),
