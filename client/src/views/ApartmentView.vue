@@ -1,11 +1,45 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed, watch, ComputedRef } from 'vue';
+import { useRouter } from 'vue-router';
 import { useApartmentStore } from './../stores/ApartmentStore';
 import Navbar from '../components/Navbar.vue';
+import { getNumberOfImages } from './../helpers/numberOfImages';
+
+const router = useRouter();
 
 const apartmentStore = useApartmentStore();
 
 const apartment: any = computed(() => apartmentStore.apartment);
+let apartmentId = ref(router.currentRoute.value.params.id);
+const numOfImages: ComputedRef<number> = computed((): number =>
+	getNumberOfImages(String(apartmentId.value))
+);
+let currentImageIndex = ref(1);
+
+watch(
+	() => router.currentRoute.value.params.id,
+	(newValue) => {
+		apartmentId.value = newValue;
+		currentImageIndex.value = 1;
+		apartmentStore.getApartment(String(newValue));
+	}
+);
+
+function previousImage(): void {
+	if (currentImageIndex.value === 1) {
+		currentImageIndex.value = numOfImages.value;
+	} else {
+		currentImageIndex.value--;
+	}
+}
+
+function nextImage(): void {
+	if (currentImageIndex.value === numOfImages.value) {
+		currentImageIndex.value = 1;
+	} else {
+		currentImageIndex.value++;
+	}
+}
 </script>
 
 <template>
@@ -16,7 +50,14 @@ const apartment: any = computed(() => apartmentStore.apartment);
 		<div class="grid-container">
 			<div v-if="apartment">
 				<div class="images">
-					<h1>images</h1>
+					<button class="previous" @click="previousImage">&lt;</button>
+					<div class="image">
+						<img
+							:src="`/src/assets/${apartmentId}/${currentImageIndex}.avif`"
+							alt=""
+						/>
+					</div>
+					<button class="next" @click="nextImage">&gt;</button>
 				</div>
 			</div>
 			<div v-if="apartment" class="apartment-details">
@@ -61,14 +102,20 @@ section {
 main {
 	display: flex;
 }
+
 .grid-container {
 	display: grid;
 	grid-template-columns: 1.5fr 1fr;
-	grid-template-rows: 1.5fr 1fr;
+	grid-template-rows: 1fr 1fr;
 	gap: 2rem;
 	grid-template-areas:
 		'images apartment-details'
 		'reviews reviews';
+}
+
+img {
+	width: 100%;
+	height: 100%;
 }
 
 .no-apartment {
@@ -77,6 +124,55 @@ main {
 
 .images {
 	grid-area: images;
+	display: flex;
+	position: relative;
+}
+
+.image {
+	width: 100%;
+	display: flex;
+}
+
+img {
+	display: block;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
+}
+
+button {
+	background: rgba(0, 0, 0, 0.3);
+	height: 20%;
+	margin: auto 0;
+	font-size: 2rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 0;
+	transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.previous {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 0 1rem 1rem 0;
+}
+
+button.next {
+	/* background: blue; */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 1rem 0 0 1rem;
 }
 
 .apartment-details {
