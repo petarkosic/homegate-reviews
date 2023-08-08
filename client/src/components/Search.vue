@@ -24,8 +24,9 @@ const searchApartments = () => {
 	if (query.value !== '' && query.value.charAt(0) !== '-') {
 		apartmentStore.getApartment(query.value);
 		router.push(`/${query.value}`);
+		query.value = '';
 	}
-	if (query.value === '') {
+	if (query.value === '' && !router.currentRoute.value.params.id) {
 		emptyFieldError.value = 'Search field cannot be empty';
 	}
 	if (query.value.charAt(0) === '-') {
@@ -37,6 +38,14 @@ const searchApartments = () => {
 };
 
 const debouncedSearch = useDebounce(searchApartments, 1200);
+
+onMounted(() => {
+	if (router.currentRoute.value.params.id) {
+		query.value = String(router.currentRoute.value.params.id);
+		apartmentStore.getApartment(query.value);
+		query.value = '';
+	}
+});
 </script>
 
 <template>
