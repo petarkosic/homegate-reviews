@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useApartmentStore } from './../stores/ApartmentStore';
 import Navbar from '../components/Navbar.vue';
 import { getNumberOfImages } from './../helpers/numberOfImages';
-import formatNumber from '../helpers/formatNumber';
+import { formatNumber, formatDate } from '../helpers/helpers';
 
 const router = useRouter();
 
@@ -116,10 +116,15 @@ function nextImage(): void {
 				<div class="reviews">
 					<h2>Reviews</h2>
 					<div v-for="(item, index) in apartment" :key="index" class="review">
-						<p>
-							{{ item?.reviewer_first_name }} {{ item?.reviewer_last_name }}
-						</p>
-						<p>{{ item?.review_text }}</p>
+						<div class="reviewer">
+							<p class="name">
+								{{ item?.reviewer_first_name }} {{ item?.reviewer_last_name }}
+							</p>
+						</div>
+						<div class="review-data">
+							<p class="review-text">{{ item?.review_text }}</p>
+							<p class="review-date">{{ formatDate(item?.date_of_review) }}</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -277,9 +282,34 @@ button.next {
 	grid-area: reviews;
 	text-align: left;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
-sup {
+.review {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.reviewer p {
+	margin: 0;
+}
+
+.name {
+	font-weight: bold;
+}
+
+.review-data p {
+	margin: 0;
+}
+
+.review-date {
+	opacity: 0.5;
+}
+
+.review-data sup {
 	line-height: 1;
 }
 </style>
