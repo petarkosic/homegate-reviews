@@ -3,6 +3,7 @@ import { ref, computed, watch, ComputedRef } from 'vue';
 import { useRouter } from 'vue-router';
 import { useApartmentStore } from './../stores/ApartmentStore';
 import Navbar from '../components/Navbar.vue';
+import StarRating from '../components/StarRating.vue';
 import { getNumberOfImages } from './../helpers/numberOfImages';
 import { formatNumber, formatDate } from '../helpers/helpers';
 
@@ -120,6 +121,7 @@ function nextImage(): void {
 							<p class="name">
 								{{ item?.reviewer_first_name }} {{ item?.reviewer_last_name }}
 							</p>
+							<StarRating :rating="item?.star_rating" />
 						</div>
 						<div class="review-data">
 							<p class="review-text">{{ item?.review_text }}</p>
