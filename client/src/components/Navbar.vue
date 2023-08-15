@@ -45,6 +45,23 @@ import Search from '../components/Search.vue';
 		<div class="search">
 			<Search />
 		</div>
+		<div class="login">
+			<button class="login-button">
+				<svg
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+					class="Icon_icon_3pw5i HgMainNavItem_linkIcon_2Yare HgLink_icon_3Rqjm"
+					style="width: 1.25rem; height: 1.25rem; transform: rotate(0deg)"
+				>
+					<path
+						d="M12.1 6a2.1 2.1 0 11-4.2 0 2.1 2.1 0 014.2 0zm4 9v1.1H3.9V15c0-.64 3.13-2.1 6.1-2.1 2.97 0 6.1 1.46 6.1 2.1zM10 2C7.79 2 6 3.79 6 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v2c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-2c0-2.66-5.33-4-8-4z"
+						class="icon-fillable"
+					></path>
+				</svg>
+				<span class="account">User account</span>
+			</button>
+		</div>
 	</div>
 </template>
 
@@ -53,6 +70,7 @@ import Search from '../components/Search.vue';
 	width: 100%;
 	height: max-content;
 	display: flex;
+	align-items: center;
 }
 .logo-link {
 	width: 144px;
@@ -73,5 +91,49 @@ a {
 	width: 100%;
 	height: 30px;
 	padding: 2rem;
+}
+
+.login-button {
+	height: 100%;
+	padding: 2rem;
+	display: flex;
+	align-items: center;
+	border: none;
+	background: #242424;
+	transition: all 0.125s ease-in-out;
+}
+
+.login-button:hover {
+	background: #1a1a1a;
+}
+
+.login {
+	position: relative;
+	/* display: inline-flex;
+	align-items: center; */
+	flex-shrink: 0;
+	height: 100%;
+}
+
+.login a {
+	text-decoration: none;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+}
+
+.icon-fillable {
+	fill: #fff;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.account {
+	margin-left: 0.5rem;
+	white-space: nowrap;
+	max-width: 170px;
 }
 </style>
