@@ -1,6 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import Search from '../components/Search.vue';
+
+const isModalOpen = ref(false);
+
+const toggleModalOpen = (): void => {
+	if (isModalOpen.value) {
+		const hasFocusedInput = document.activeElement instanceof HTMLInputElement;
+		if (!hasFocusedInput) {
+			isModalOpen.value = false;
+		}
+	} else {
+		isModalOpen.value = true;
+	}
+};
 </script>
 
 <template>
@@ -46,7 +60,7 @@ import Search from '../components/Search.vue';
 			<Search />
 		</div>
 		<div class="login">
-			<button class="login-button">
+			<button @click="toggleModalOpen" class="login-button">
 				<svg
 					viewBox="0 0 20 20"
 					xmlns="http://www.w3.org/2000/svg"
@@ -61,6 +75,28 @@ import Search from '../components/Search.vue';
 				</svg>
 				<span class="account">User account</span>
 			</button>
+
+			<div v-if="isModalOpen" @click="toggleModalOpen" class="modal">
+				<div class="modal-content" @click.stop>
+					<h2>Sign in</h2>
+					<div class="form-wrapper">
+						<form method="POST">
+							<div class="inputs">
+								<div class="input-wrapper">
+									<input type="text" name="email" id="email" />
+									<label for="email">Email</label>
+								</div>
+								<div class="input-wrapper">
+									<input type="password" name="password" id="password" />
+									<label for="password">Password</label>
+								</div>
+							</div>
+							<button type="submit" class="submit">Sign in</button>
+						</form>
+					</div>
+					<button class="modal-close" @click="toggleModalOpen">X</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -109,8 +145,6 @@ a {
 
 .login {
 	position: relative;
-	/* display: inline-flex;
-	align-items: center; */
 	flex-shrink: 0;
 	height: 100%;
 }
@@ -135,5 +169,118 @@ a {
 	margin-left: 0.5rem;
 	white-space: nowrap;
 	max-width: 170px;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+}
+
+.modal-content {
+	width: 400px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	background: #1a1a1a;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 3rem;
+	position: relative;
+}
+
+.modal-content h2 {
+	text-align: left;
+	margin: 0;
+	padding: 40px 40px 24px;
+}
+
+.modal-content .submit {
+	width: 100%;
+	height: 52px;
+	margin-top: 1.5rem;
+	padding: 4px 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	border-radius: 4px;
+	background: #e5007d;
+}
+
+.modal-content .modal-close {
+	all: unset;
+	width: 10%;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	font-size: 1.2rem;
+	opacity: 0.5;
+	border: 1px solid #1a1a1a;
+	transition: all 0.2s ease-in-out;
+}
+
+.modal-content .modal-close:hover {
+	cursor: pointer;
+	border: 1px solid #e5007d;
+	border-radius: 5px;
+}
+
+.form-wrapper {
+	padding: 0 40px 40px;
+	display: block;
+}
+
+form .input-wrapper {
+	width: 100%;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.input-wrapper input {
+	width: 90%;
+	height: 52px;
+	padding: 0 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	transition: border-color 0.3s;
+}
+
+.input-wrapper input + label {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 14px;
+	color: #999;
+	pointer-events: none;
+	transition: top 0.3s, left 0.3s, font-size 0.3s, color 0.3s;
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+	top: -10px;
+	left: 1rem;
+	font-size: 1rem;
+	padding: 0 1rem;
+	border-radius: 10px;
+	color: #999;
+	background: linear-gradient(to bottom, #1a1a1a, #333);
+}
+
+.input-wrapper input:not(:focus):not(:placeholder-shown) + label {
+	top: 5px;
+	left: 16px;
+	padding: 10px;
+	font-size: 1.125rem;
+	color: #999;
+	background: none;
 }
 </style>
