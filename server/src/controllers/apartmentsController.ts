@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { pool } from './../db/db';
+import { pool } from '../db/db';
 
 const getApartment = async (req: Request, res: Response) => {
 	const client = await pool.connect();

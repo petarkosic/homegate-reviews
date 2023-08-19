@@ -3,7 +3,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import apartmentRoute from './routes/apartmentRoute';
+import apartmentsRoute from './routes/apartmentsRoute';
+import usersRoute from './routes/usersRoute';
 
 dotenv.config();
 const PORT: string | number = process.env.PORT || 5000;
@@ -18,7 +19,8 @@ app.get('/', (req: Request, res: Response) => {
 	res.send('Hello from api');
 });
 
-app.use('/apartment', apartmentRoute);
+app.use('/apartment', apartmentsRoute);
+app.use('/users', usersRoute);
 
 app.listen(PORT, () => {
 	console.log(`App listening on port ${PORT}`);
