@@ -46,7 +46,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 			last_name,
 			email,
 			registered_at,
-			accessToken,
+			access_token: accessToken,
 			message: 'User logged in',
 		});
 	} catch (err) {

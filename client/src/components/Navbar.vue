@@ -1,9 +1,72 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import Search from '../components/Search.vue';
 
+interface UserData {
+	user_id: number;
+	first_name: string;
+	last_name: string;
+	email: string;
+	registered_at: string;
+	access_token: string;
+	message: string;
+}
+
+const router = useRouter();
+
 const isModalOpen = ref(false);
+
+const user = JSON.parse(localStorage.getItem('user') || 'null') as UserData;
+
+const email = ref('');
+const password = ref('');
+
+const emailError = ref<string | null>(null);
+const passwordError = ref<string | null>(null);
+
+const handleSubmit = async () => {
+	if (emailError.value || passwordError.value) {
+		return;
+	}
+
+	if (!email.value) {
+		emailError.value = 'Email cannot be empty';
+	}
+
+	if (!password.value) {
+		passwordError.value = 'Password cannot be empty';
+	}
+
+	try {
+		const response = await fetch('http://localhost:5000/users/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email.value,
+				password: password.value,
+			}),
+		});
+
+		if (response.ok) {
+			const data = await response.json();
+			localStorage.setItem('token', data.access_token);
+			localStorage.setItem('user', JSON.stringify(data));
+			isModalOpen.value = false;
+			router.go(0);
+		}
+	} catch (error) {
+		alert('Invalid email or password');
+	}
+};
+
+const logout = () => {
+	localStorage.removeItem('token');
+	localStorage.removeItem('user');
+	router.go(0);
+};
 
 const toggleModalOpen = (): void => {
 	if (isModalOpen.value) {
@@ -73,30 +136,55 @@ const toggleModalOpen = (): void => {
 						class="icon-fillable"
 					></path>
 				</svg>
-				<span class="account">User account</span>
+				<div class="account">
+					<div v-if="user" class="hello-user">Hello, {{ user.first_name }}</div>
+					<div v-else class="account-user">User account</div>
+				</div>
 			</button>
 
-			<div v-if="isModalOpen" @click="toggleModalOpen" class="modal">
-				<div class="modal-content" @click.stop>
-					<h2>Sign in</h2>
-					<div class="form-wrapper">
-						<form method="POST">
-							<div class="inputs">
-								<div class="input-wrapper">
-									<input type="text" name="email" id="email" />
-									<label for="email">Email</label>
-								</div>
-								<div class="input-wrapper">
-									<input type="password" name="password" id="password" />
-									<label for="password">Password</label>
-								</div>
-							</div>
-							<button type="submit" class="submit">Sign in</button>
-						</form>
-					</div>
-					<button class="modal-close" @click="toggleModalOpen">X</button>
+			<template v-if="user">
+				<div class="logout">
+					<button @click="logout">Logout</button>
 				</div>
-			</div>
+			</template>
+
+			<template v-else>
+				<div v-if="isModalOpen" @click="toggleModalOpen" class="modal">
+					<div class="modal-content" @click.stop>
+						<h2>Sign in</h2>
+						<div class="form-wrapper">
+							<form method="POST" @submit.prevent="handleSubmit">
+								<div class="inputs">
+									<div class="input-wrapper">
+										<input
+											type="text"
+											name="email"
+											id="email"
+											v-model="email"
+										/>
+										<label for="email">Email</label>
+										<p v-if="emailError" class="error">{{ emailError }}</p>
+									</div>
+									<div class="input-wrapper">
+										<input
+											type="password"
+											name="password"
+											id="password"
+											v-model="password"
+										/>
+										<label for="password">Password</label>
+										<p v-if="passwordError" class="error">
+											{{ passwordError }}
+										</p>
+									</div>
+								</div>
+								<button type="submit" class="submit">Sign in</button>
+							</form>
+						</div>
+						<button class="modal-close" @click="toggleModalOpen">X</button>
+					</div>
+				</div>
+			</template>
 		</div>
 	</div>
 </template>
@@ -169,6 +257,42 @@ a {
 	margin-left: 0.5rem;
 	white-space: nowrap;
 	max-width: 170px;
+}
+
+.account .account-user::after {
+	content: '';
+}
+
+.account .hello-user::after {
+	content: '\25bc';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0.2rem;
+	opacity: 0.4;
+}
+
+.logout {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.login:hover .logout {
+	opacity: 1;
+	top: 100%;
+}
+
+.logout button {
+	width: 100%;
+	padding: 1rem 0;
+	color: #e5007d;
+}
+
+.logout button:hover {
+	border: 1px solid #e5007d;
 }
 
 .modal {
@@ -282,5 +406,11 @@ form .input-wrapper {
 	font-size: 1.125rem;
 	color: #999;
 	background: none;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
 }
 </style>
