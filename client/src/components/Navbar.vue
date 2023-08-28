@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import Search from '../components/Search.vue';
-import LoginModal from '../components/LoginModal.vue';
+import LoginButton from './LoginButton.vue';
+
+interface UserData {
+	user_id: number;
+	first_name: string;
+	last_name: string;
+	email: string;
+	registered_at: string;
+	access_token: string;
+	message: string;
+}
+
+const user = JSON.parse(localStorage.getItem('user') || 'null') as UserData;
 </script>
 
 <template>
@@ -46,7 +58,10 @@ import LoginModal from '../components/LoginModal.vue';
 		<div class="search">
 			<Search />
 		</div>
-		<LoginModal />
+		<LoginButton>
+			<div v-if="user" class="hello-user">Hello, {{ user.first_name }}</div>
+			<div v-else class="account-user">User account</div>
+		</LoginButton>
 	</div>
 </template>
 
