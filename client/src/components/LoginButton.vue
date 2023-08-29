@@ -18,7 +18,7 @@ const isModalOpen: Ref<boolean> = ref(false);
 
 const user = JSON.parse(localStorage.getItem('user') || 'null') as UserData;
 
-const logout = () => {
+const logout = (): void => {
 	localStorage.removeItem('token');
 	localStorage.removeItem('user');
 	router.go(0);
@@ -34,10 +34,14 @@ const toggleModalOpen = (): void => {
 		isModalOpen.value = true;
 	}
 };
+
+const openModal = (): void => {
+	isModalOpen.value = true;
+};
 </script>
 <template>
 	<div class="wrapper">
-		<button @click="toggleModalOpen" class="login-button">
+		<button @click="openModal" class="login-button">
 			<svg
 				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +64,7 @@ const toggleModalOpen = (): void => {
 		</div>
 	</div>
 
-	<LoginModal v-if="isModalOpen && !user" />
+	<LoginModal @click="toggleModalOpen" v-if="isModalOpen && !user" />
 </template>
 
 <style scoped>
