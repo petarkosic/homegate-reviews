@@ -2,6 +2,8 @@
 import { Ref, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+const emits = defineEmits(['update:isModalOpen']);
+
 const router = useRouter();
 
 const email = ref('');
@@ -60,6 +62,10 @@ const toggleModalOpen = (): void => {
 		isModalOpen.value = true;
 	}
 };
+
+const closeModal = (): void => {
+	emits('update:isModalOpen');
+};
 </script>
 
 <template>
@@ -91,7 +97,7 @@ const toggleModalOpen = (): void => {
 						<button type="submit" class="submit">Sign in</button>
 					</form>
 				</div>
-				<button class="modal-close" @click="toggleModalOpen">X</button>
+				<button class="modal-close" @click="closeModal">X</button>
 			</div>
 		</div>
 	</div>

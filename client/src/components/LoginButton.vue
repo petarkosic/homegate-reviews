@@ -38,6 +38,10 @@ const toggleModalOpen = (): void => {
 const openModal = (): void => {
 	isModalOpen.value = true;
 };
+
+const closeModal = (): void => {
+	isModalOpen.value = false;
+};
 </script>
 <template>
 	<div class="wrapper">
@@ -64,7 +68,11 @@ const openModal = (): void => {
 		</div>
 	</div>
 
-	<LoginModal @click="toggleModalOpen" v-if="isModalOpen && !user" />
+	<LoginModal
+		@click="toggleModalOpen"
+		v-if="isModalOpen && !user"
+		@update:is-modal-open="closeModal"
+	/>
 </template>
 
 <style scoped>
