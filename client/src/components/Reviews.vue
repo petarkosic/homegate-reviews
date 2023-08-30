@@ -3,8 +3,8 @@ import { computed, ref } from 'vue';
 import { useApartmentStore } from '../stores/ApartmentStore';
 import { formatDate } from './../helpers/helpers';
 import StarRating from './StarRating.vue';
-import LoginModal from './LoginModal.vue';
-import AddReviewModal from './AddReviewModal.vue';
+import LoginButton from './LoginButton.vue';
+import AddReviewButton from './AddReviewButton.vue';
 
 interface UserData {
 	user_id: number;
@@ -18,7 +18,7 @@ interface UserData {
 
 const user = JSON.parse(localStorage.getItem('user') || 'null') as UserData;
 const isLoggedIn = ref<boolean>(user ? true : false);
-const shouldOpenModal = ref<boolean>(false);
+const shouldOpenModal = ref<boolean>(true);
 
 const apartmentStore = useApartmentStore();
 
@@ -33,11 +33,6 @@ const handleReviewModal = (): void => {
 		isLoggedIn.value = true;
 	}
 };
-
-const closeModals = (): void => {
-	isLoggedIn.value = false;
-	shouldOpenModal.value = false;
-};
 </script>
 
 <template>
@@ -45,9 +40,10 @@ const closeModals = (): void => {
 		<div class="reviews">
 			<div class="review-add">
 				<h2>Reviews</h2>
-				<button @click="handleReviewModal">
-					{{ user ? 'Add a Review' : 'Login to Review' }}
-				</button>
+				<LoginButton v-if="!user" @click="handleReviewModal">
+					Login to Review
+				</LoginButton>
+				<AddReviewButton v-else>Add a review</AddReviewButton>
 			</div>
 			<div v-for="(item, index) in apartment" :key="index" class="review">
 				<div class="reviewer">
@@ -62,17 +58,10 @@ const closeModals = (): void => {
 				</div>
 			</div>
 		</div>
-		<div v-if="shouldOpenModal" class="modals">
-			<LoginModal v-if="!isLoggedIn && shouldOpenModal" @close="closeModals" />
-			<AddReviewModal
-				v-else-if="isLoggedIn && shouldOpenModal"
-				@close="closeModals"
-			/>
-		</div>
 	</div>
 </template>
 
-<style scoped>
+<style>
 .reviews {
 	grid-area: reviews;
 	text-align: left;
@@ -129,5 +118,9 @@ const closeModals = (): void => {
 	justify-content: center;
 	align-items: center;
 	z-index: 100;
+}
+
+.modals .login {
+	height: 10px;
 }
 </style>
