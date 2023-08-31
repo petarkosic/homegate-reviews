@@ -43,7 +43,7 @@ const handleReviewModal = (): void => {
 				<LoginButton v-if="!user" @click="handleReviewModal">
 					Login to Review
 				</LoginButton>
-				<AddReviewButton v-else>Add a review</AddReviewButton>
+				<AddReviewButton v-else>Leave a review</AddReviewButton>
 			</div>
 			<div v-for="(item, index) in apartment" :key="index" class="review">
 				<div class="reviewer">

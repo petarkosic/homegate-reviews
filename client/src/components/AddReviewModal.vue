@@ -19,13 +19,62 @@ interface UserData {
 }
 
 const router = useRouter();
-let apartmentId: string = ref(router.currentRoute.value.params.id);
+const apartmentId = ref(router.currentRoute.value.params.id);
 
 const user = JSON.parse(localStorage.getItem('user') || 'null') as UserData;
 const dateFormatted = new Date(user?.registered_at).toLocaleDateString('en-GB');
 
 const starRatings: Array<number> = [1, 2, 3, 4, 5];
 const selectedRating: Ref<number | null> = ref(null);
+const selectedRatingError: Ref<string | null> = ref(null);
+
+const textarea: Ref<string> = ref('');
+const textareaError: Ref<string | null> = ref(null);
+
+const handleSubmit = async () => {
+	if (!textarea.value) {
+		textareaError.value = 'Text cannot be empty';
+		return;
+	}
+
+	if (textarea.value.length > 500) {
+		textareaError.value = 'Text cannot be longer than 500 characters';
+		return;
+	}
+
+	if (selectedRating.value && !textarea.value) {
+		selectedRatingError.value = 'You must select a rating';
+		return;
+	}
+
+	try {
+		const response = await fetch('http://localhost:5000/reviews', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				user_id: user.user_id,
+				apartment_id: apartmentId.value,
+				review_text: textarea.value,
+				star_rating: selectedRating.value,
+			}),
+		});
+
+		if (response.ok) {
+			textarea.value = '';
+			textareaError.value = null;
+			selectedRating.value = null;
+			selectedRatingError.value = null;
+			router.go(0);
+		} else {
+			textareaError.value = 'Text cannot be empty';
+			selectedRatingError.value = 'You must select a rating';
+		}
+	} catch (error) {
+		alert('Invalid textarea or star rating');
+	}
+};
 
 const closeModal = (): void => {
 	emits('update:isModalOpen');
@@ -47,23 +96,38 @@ const selectRating = (rating: number): void => {
 						{{ dateFormatted }}
 					</p>
 				</div>
-				<div class="textarea-wrapper">
-					<textarea name="review" id="review" cols="20" rows="10"></textarea>
-				</div>
-				<div class="star-rating">
-					<ul>
-						<li
-							v-for="rating in starRatings"
-							:key="rating"
-							@click="selectRating(rating)"
-							:class="{ active: selectedRating === rating }"
-						>
-							{{ rating }}
-						</li>
-					</ul>
-				</div>
+				<form method="POST" @submit.prevent="handleSubmit">
+					<div class="textarea-wrapper">
+						<div v-if="textareaError" class="error">{{ textareaError }}</div>
+						<textarea
+							name="review"
+							id="review"
+							cols="20"
+							rows="10"
+							maxlength="500"
+							v-model="textarea"
+						></textarea>
+					</div>
+					<div class="star-rating">
+						<div v-if="selectedRatingError" class="error">
+							{{ selectedRatingError }}
+						</div>
+
+						<p>Rating:</p>
+						<ul>
+							<li
+								v-for="rating in starRatings"
+								:key="rating"
+								@click="selectRating(rating)"
+								:class="{ active: selectedRating === rating }"
+							>
+								{{ rating }}
+							</li>
+						</ul>
+					</div>
+					<button class="submit">Submit a review</button>
+				</form>
 				<button class="modal-close" @click="closeModal">X</button>
-				<button>Submit as review</button>
 			</div>
 		</div>
 	</div>
@@ -130,6 +194,15 @@ textarea {
 	background: #1a1a1a;
 }
 
+.star-rating {
+	margin: 1rem 0;
+	background: #1a1a1a;
+}
+
+.star-rating p {
+	margin: 1rem;
+}
+
 .star-rating ul {
 	width: 100%;
 	height: 40px;
@@ -139,6 +212,7 @@ textarea {
 	align-items: center;
 	justify-content: space-around;
 	gap: 1rem;
+	margin-bottom: 1rem;
 }
 
 .star-rating ul li {
@@ -180,5 +254,16 @@ textarea {
 	cursor: pointer;
 	border: 1px solid #e5007d;
 	border-radius: 5px;
+}
+
+.submit {
+	width: 100%;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
 }
 </style>
