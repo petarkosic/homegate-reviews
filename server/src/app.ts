@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 import apartmentsRoute from './routes/apartmentsRoute';
 import usersRoute from './routes/usersRoute';
+import reviewsRoute from './routes/reviewsRoute';
 
 dotenv.config();
 const PORT: string | number = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/apartment', apartmentsRoute);
 app.use('/users', usersRoute);
+app.use('/reviews', reviewsRoute);
 
 app.listen(PORT, () => {
 	console.log(`App listening on port ${PORT}`);
