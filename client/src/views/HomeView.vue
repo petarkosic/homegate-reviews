@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import Navbar from '../components/Navbar.vue';
+import DisclaimerModal from '../components/DisclaimerModal.vue';
 </script>
 
 <template>
 	<main>
 		<Navbar />
 	</main>
+	<DisclaimerModal />
 </template>
 
 <style scoped>
