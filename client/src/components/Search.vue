@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useApartmentStore } from '../stores/ApartmentStore';
 import { useDebounce } from './../helpers/useDebounce';
 import { useRouter } from 'vue-router';
+import AvailableApartments from '../components/AvailableApartments.vue';
+import { useSelectApartmentStore } from '../stores/SelectApartmentStore';
 
 const router = useRouter();
-const query = ref<string>('');
+const query = ref<string | null>('');
 const apartmentStore = useApartmentStore();
+const selectApartmentStore = useSelectApartmentStore();
 const searchInputRef = ref<HTMLInputElement | null>(null);
 const emptyFieldError = ref<string | null>('');
 
@@ -14,14 +17,17 @@ onMounted(() => {
 	searchInputRef.value?.focus();
 });
 
-const handleInput = (e: Event) => {
-	if (e.target instanceof HTMLInputElement) {
-		query.value = e.target.value;
+watch(
+	() => selectApartmentStore.apartmentID,
+	(newValue) => {
+		query.value = newValue;
+		apartmentStore.getApartment(newValue);
+		router.push(`/${newValue}`);
 	}
-};
+);
 
 const searchApartments = () => {
-	if (query.value !== '' && query.value.charAt(0) !== '-') {
+	if (query.value !== '' && query?.value?.charAt(0) !== '-') {
 		apartmentStore.getApartment(query.value);
 		router.push(`/${query.value}`);
 		query.value = '';
@@ -57,6 +63,7 @@ onMounted(() => {
 			v-model="query"
 			@input="debouncedSearch"
 		/>
+		<AvailableApartments />
 		<button @click="searchApartments">Search</button>
 	</div>
 	<div v-if="emptyFieldError" class="error">
