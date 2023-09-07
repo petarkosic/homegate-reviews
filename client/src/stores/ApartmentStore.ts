@@ -31,7 +31,7 @@ export const useApartmentStore: StoreDefinition<
 	},
 	{},
 	{
-		getApartment(id: string): Promise<void>;
+		getApartment(id: string | null): Promise<void>;
 	}
 > = defineStore('apartment', {
 	state: (): { apartment: Apartment | null } => ({

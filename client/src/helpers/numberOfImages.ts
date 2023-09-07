@@ -22,3 +22,13 @@ export function getNumberOfImages(apartmentId: string): number {
 		return 0;
 	}
 }
+
+export function getAllApartmentIDs(): string[] {
+	const apartmentIDsMap: string[] = [];
+
+	for (const apartmentID of Object.keys(numberOfImages)) {
+		apartmentIDsMap.push(apartmentID);
+	}
+
+	return apartmentIDsMap;
+}
