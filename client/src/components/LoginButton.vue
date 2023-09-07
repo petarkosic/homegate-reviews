@@ -127,11 +127,6 @@ const closeModal = (): void => {
 	transition: all 0.3s ease-in-out;
 }
 
-.wrapper:hover .logout {
-	opacity: 1;
-	top: 100%;
-}
-
 .logout button {
 	width: 100%;
 	padding: 1rem 0;
@@ -140,5 +135,15 @@ const closeModal = (): void => {
 
 .logout button:hover {
 	border: 1px solid #e5007d;
+}
+
+.login-button:hover + .logout {
+	opacity: 1;
+	top: 100%;
+}
+
+.logout:hover {
+	opacity: 1;
+	top: 100%;
 }
 </style>
