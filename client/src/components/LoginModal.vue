@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
+import { Ref, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { usersData, usersFullNamesList } from '../helpers/usersData';
 
 const emits = defineEmits(['update:isModalOpen']);
 
 const router = useRouter();
 
-const email = ref('');
-const password = ref('');
-
 const emailError = ref<string | null>(null);
 const passwordError = ref<string | null>(null);
 
 const isModalOpen: Ref<boolean> = ref(true);
+
+const selectedUser: Ref<string> = ref(usersFullNamesList[0]);
+
+const email = ref(usersData[selectedUser.value].email);
+const password = ref(usersData[selectedUser.value].password);
+
+watch(selectedUser, (newValue) => {
+	email.value = usersData[newValue].email;
+	password.value = usersData[newValue].password;
+});
 
 const handleSubmit = async () => {
 	if (!email.value) {
@@ -96,6 +104,14 @@ const closeModal = (): void => {
 						</div>
 						<button type="submit" class="submit">Sign in</button>
 					</form>
+				</div>
+				<div>
+					<h2>Log in as user:</h2>
+					<select v-model="selectedUser">
+						<option v-for="user in usersFullNamesList" :key="user">
+							{{ user }}
+						</option>
+					</select>
 				</div>
 				<button class="modal-close" @click="closeModal">X</button>
 			</div>
