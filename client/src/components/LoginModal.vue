@@ -105,13 +105,15 @@ const closeModal = (): void => {
 						<button type="submit" class="submit">Sign in</button>
 					</form>
 				</div>
-				<div>
+				<div class="login-dropdown">
 					<h2>Log in as user:</h2>
-					<select v-model="selectedUser">
-						<option v-for="user in usersFullNamesList" :key="user">
-							{{ user }}
-						</option>
-					</select>
+					<div class="dropdown-select-wrapper">
+						<select v-model="selectedUser" class="dropdown-select">
+							<option v-for="user in usersFullNamesList" :key="user">
+								{{ user }}
+							</option>
+						</select>
+					</div>
 				</div>
 				<button class="modal-close" @click="closeModal">X</button>
 			</div>
@@ -184,7 +186,7 @@ const closeModal = (): void => {
 }
 
 .form-wrapper {
-	padding: 0 40px 40px;
+	padding: 0 40px;
 	display: block;
 }
 
@@ -246,6 +248,31 @@ form .input-wrapper {
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
+}
+
+.login-dropdown {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 40px 40px;
+}
+
+.login-dropdown h2 {
+	padding: 0 0 40px;
+	width: 100%;
+}
+
+.dropdown-select-wrapper {
+	height: 50px;
+}
+
+.dropdown-select {
+	width: 100%;
+	height: 100%;
+	font-size: 1.25rem;
+	padding: 0 1rem;
+	border: none;
+	border-radius: 8px;
 }
 
 .error {
