@@ -208,7 +208,6 @@ form .input-wrapper {
 .input-wrapper input + label {
 	position: absolute;
 	top: 10px;
-	left: 10px;
 	font-size: 14px;
 	color: #999;
 	pointer-events: none;
@@ -218,7 +217,7 @@ form .input-wrapper {
 .input-wrapper input:focus + label,
 .input-wrapper input:not(:placeholder-shown) + label {
 	top: -10px;
-	left: 1rem;
+	right: 0;
 	font-size: 1rem;
 	padding: 0 1rem;
 	border-radius: 10px;
@@ -228,11 +227,13 @@ form .input-wrapper {
 
 .input-wrapper input:not(:focus):not(:placeholder-shown) + label {
 	top: 5px;
-	left: 16px;
+	right: 0;
 	padding: 10px;
 	font-size: 1.125rem;
 	color: #999;
 	background: none;
+	text-align: right;
+	width: max-content;
 }
 
 .login {

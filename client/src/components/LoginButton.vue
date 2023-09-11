@@ -125,6 +125,7 @@ const closeModal = (): void => {
 	top: 50%;
 	opacity: 0;
 	transition: all 0.3s ease-in-out;
+	z-index: 100;
 }
 
 .logout button {
@@ -145,5 +146,16 @@ const closeModal = (): void => {
 .logout:hover {
 	opacity: 1;
 	top: 100%;
+}
+
+@media (max-width: 1023px) {
+	/* .wrapper {} */
+	.wrapper button {
+		margin: 0;
+	}
+
+	.account {
+		display: none;
+	}
 }
 </style>

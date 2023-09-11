@@ -266,4 +266,21 @@ textarea {
 	font-size: 14px;
 	margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+	.modal .review {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1023px) {
+	.review {
+		width: 80%;
+	}
+
+	.review form .textarea-wrapper {
+		max-width: 100%;
+		width: 100%;
+	}
+}
 </style>

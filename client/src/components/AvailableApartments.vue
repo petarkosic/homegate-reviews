@@ -100,4 +100,11 @@ li div {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+@media (max-width: 768px) {
+	div button {
+		width: max-content;
+		padding: 0 1.187rem;
+	}
+}
 </style>

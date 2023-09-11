@@ -128,4 +128,10 @@ const apartment: any = computed(() => apartmentStore.apartment);
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+@media (max-width: 1023px) {
+	.description {
+		max-width: 60ch;
+	}
+}
 </style>

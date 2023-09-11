@@ -62,10 +62,13 @@ const handleReviewModal = (): void => {
 </template>
 
 <style>
+.reviews-wrapper {
+	padding: 20px;
+}
+
 .reviews {
 	grid-area: reviews;
 	text-align: left;
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -122,5 +125,15 @@ const handleReviewModal = (): void => {
 
 .modals .login {
 	height: 10px;
+}
+@media (max-width: 1023px) {
+	.reviews-wrapper {
+		width: 100%;
+		padding: 20px;
+	}
+
+	.review {
+		max-width: 60ch;
+	}
 }
 </style>

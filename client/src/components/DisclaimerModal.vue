@@ -119,6 +119,14 @@ const closeModal = () => {
 	background: #1a1a1a;
 }
 
+.modal-content > h2 {
+	font-size: clamp(1rem, calc(5vw + 1rem), 2rem);
+}
+.modal-content div,
+.modal-content p {
+	font-size: clamp(0.5rem, calc(5vw + 1rem), 1rem);
+}
+
 .modal-buttons {
 	margin-left: auto;
 	height: 50px;
@@ -138,5 +146,11 @@ const closeModal = () => {
 .modal-buttons button:hover {
 	border: 1px solid #e5007d;
 	outline: none;
+}
+
+@media (max-width: 768px) {
+	.modal-content {
+		height: 70%;
+	}
 }
 </style>

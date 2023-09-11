@@ -54,4 +54,23 @@ main {
 		'images apartment-details'
 		'reviews reviews';
 }
+
+@media (max-width: 1023px) {
+	.grid-container {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'images'
+			'apartment-details'
+			'reviews';
+	}
+}
+@media (max-width: 768px) {
+	.grid-container {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'images'
+			'apartment-details'
+			'reviews';
+	}
+}
 </style>

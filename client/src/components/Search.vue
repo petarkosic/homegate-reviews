@@ -64,7 +64,7 @@ onMounted(() => {
 			@input="debouncedSearch"
 		/>
 		<AvailableApartments />
-		<button @click="searchApartments">Search</button>
+		<button @click="searchApartments"></button>
 	</div>
 	<div v-if="emptyFieldError" class="error">
 		{{ emptyFieldError }}
@@ -73,7 +73,6 @@ onMounted(() => {
 
 <style scoped>
 div {
-	/* padding: 2rem; */
 	display: flex;
 	gap: 0.5rem;
 }
@@ -84,5 +83,21 @@ input {
 	border: none;
 	border-radius: 6px;
 	padding: 0 1rem;
+}
+
+div button::before {
+	content: 'Search';
+}
+
+@media (max-width: 768px) {
+	div button {
+		width: max-content;
+		padding: 0 1rem;
+	}
+
+	div button::before {
+		content: '🔍';
+		padding: 0;
+	}
 }
 </style>
