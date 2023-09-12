@@ -9,7 +9,7 @@ async function createDb() {
 	const client = await createDbPool.connect();
 
 	try {
-		await client.query('CREATE DATABASE homegate_reviews;');
+		await client.query('CREATE DATABASE $1;', [process.env.DB_DATABASE]);
 
 		console.log('Database created successfully.');
 	} catch (err) {
