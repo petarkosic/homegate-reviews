@@ -54,12 +54,14 @@ const closeModal = (): void => {
 		</button>
 	</div>
 
-	<AddReviewModal
-		@click="toggleModalOpen"
-		v-if="isModalOpen"
-		:isModalOpen="isModalOpen"
-		@update:is-modal-open="closeModal"
-	/>
+	<Transition>
+		<AddReviewModal
+			@click="toggleModalOpen"
+			v-if="isModalOpen"
+			:isModalOpen="isModalOpen"
+			@update:is-modal-open="closeModal"
+		/>
+	</Transition>
 </template>
 
 <style scoped>
@@ -91,5 +93,15 @@ const closeModal = (): void => {
 	margin-left: 0.5rem;
 	white-space: nowrap;
 	max-width: 170px;
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
 }
 </style>

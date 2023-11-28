@@ -24,20 +24,22 @@ const handleClick = (id: string) => {
 <template>
 	<div class="icon">
 		<button @click="toggleModalOpen">&#9432;</button>
-		<div v-if="isModalOpen" class="modal">
-			<h2>Available Apartment ID's</h2>
-			<div>
-				<ul>
-					<li
-						v-for="id in getAllApartmentIDs()"
-						:key="id"
-						@click="handleClick(id)"
-					>
-						{{ id }}
-					</li>
-				</ul>
+		<Transition>
+			<div v-if="isModalOpen" class="modal">
+				<h2>Available Apartment ID's</h2>
+				<div>
+					<ul>
+						<li
+							v-for="id in getAllApartmentIDs()"
+							:key="id"
+							@click="handleClick(id)"
+						>
+							{{ id }}
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</Transition>
 	</div>
 </template>
 
@@ -106,5 +108,15 @@ li div {
 		width: max-content;
 		padding: 0 1.187rem;
 	}
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
 }
 </style>

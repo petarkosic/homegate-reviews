@@ -67,12 +67,13 @@ const closeModal = (): void => {
 			<button @click="logout">Logout</button>
 		</div>
 	</div>
-
-	<LoginModal
-		@click="toggleModalOpen"
-		v-if="isModalOpen && !user"
-		@update:is-modal-open="closeModal"
-	/>
+	<Transition>
+		<LoginModal
+			@click="toggleModalOpen"
+			v-if="isModalOpen && !user"
+			@update:is-modal-open="closeModal"
+		/>
+	</Transition>
 </template>
 
 <style scoped>
@@ -157,5 +158,16 @@ const closeModal = (): void => {
 	.account {
 		display: none;
 	}
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+	z-index: 100;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
 }
 </style>
