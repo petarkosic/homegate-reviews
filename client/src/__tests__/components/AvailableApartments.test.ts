@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/vue';
 import { createPinia, setActivePinia } from 'pinia';
-import AvailableApartments from './AvailableApartments.vue';
-import { useSelectApartmentStore } from '../stores/SelectApartmentStore';
+import AvailableApartments from '../../components/AvailableApartments.vue';
+import { useSelectApartmentStore } from '../../stores/SelectApartmentStore';
 
 describe('AvailableApartments', () => {
 	beforeEach(() => {
